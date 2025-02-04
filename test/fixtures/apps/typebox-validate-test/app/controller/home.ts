@@ -1,6 +1,6 @@
 import { Controller } from 'egg';
-import { Static, Type } from '../../../../../../typebox';
-import { ValidateFactory, Validate } from "../../../../../../decorator";
+import { Static, Type } from '../../../../../../src/typebox.js';
+import { ValidateFactory, Validate } from "../../../../../../src/decorator.js";
 
 const TYPEBOX_ID = Type.Object({
   id: Type.String(),
@@ -54,7 +54,7 @@ export default class HomeController extends Controller {
 
   @Validate([
     [TYPEBOX_ID, ctx => ctx.params],
-    [TYPEBOX_BODY, ctx => ctx.request.body, (ctx, errors) => 'kaiwei custom error: ' + errors.map(e => e.message).join(':')],
+    [TYPEBOX_BODY, ctx => ctx.request.body, (_ctx, errors) => 'kaiwei custom error: ' + errors.map(e => e.message).join(':')],
   ])
   public async delete() {
     const { ctx } = this;

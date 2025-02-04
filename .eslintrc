@@ -1,42 +1,6 @@
 {
-  "root": true,
   "extends": [
     "eslint-config-egg/typescript",
-    "plugin:compat/recommended", // https://www.npmjs.com/package/eslint-plugin-compat
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "plugin:prettier/recommended"
-  ],
-  "env": {
-    "browser": true,
-    "node": true
-  },
-  "settings": {
-    "polyfills": ["Promise"]
-  },
-  "rules": {
-    "prefer-arrow-callback": "error",
-    "space-before-function-paren": [
-      "error",
-      {
-        "anonymous": "never",
-        "named": "never",
-        "asyncArrow": "always"
-      }
-    ],
-    "jsdoc/require-param-description": "off",
-    "jsdoc/require-returns-type": "off",
-    "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    "import/default": "off",
-    "import/order": [
-      "error",
-      {
-        // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
-        "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"], "object"],
-        "newlines-between": "never"
-      }
-    ]
-  }
+    "eslint-config-egg/lib/rules/enforce-node-prefix"
+  ]
 }

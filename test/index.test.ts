@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import mock from 'egg-mock';
+import { strict as assert } from 'node:assert';
+import { mock } from '@eggjs/mock';
 
 describe('test/index.test.ts', () => {
   let app: any;
@@ -144,7 +144,7 @@ describe('test/index.test.ts', () => {
   });
 
   it('should DELETE 200 /:id decorator', async () => {
-    let res = await app.httpRequest().delete('/someId').send({
+    const res = await app.httpRequest().delete('/someId').send({
       name: 'xiekw2010',
       description: 'desc  ',
       email: 'xiekw2010@gmail.com',
