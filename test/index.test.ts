@@ -1,5 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { mock } from '@eggjs/mock';
+import { Ajv } from '../src/index.js';
 
 describe('test/index.test.ts', () => {
   let app: any;
@@ -12,6 +13,11 @@ describe('test/index.test.ts', () => {
 
   after(() => app.close());
   afterEach(mock.restore);
+
+  it('should export Ajv', () => {
+    assert(Ajv);
+    assert.equal(typeof Ajv, 'function');
+  });
 
   it('should POST 200 /:id', async () => {
     const res = await app.httpRequest().post('/someId').send({
