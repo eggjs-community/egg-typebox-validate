@@ -1,6 +1,6 @@
 {
   "name": "egg-typebox-validate",
-  "version": "2.3.1",
+  "version": "3.0.0",
   "description": "another validate for typescript egg projects",
   "eggPlugin": {
     "name": "typeboxValidate",
