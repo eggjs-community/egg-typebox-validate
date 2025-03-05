@@ -1,9 +1,14 @@
 {
-  "name": "egg-typebox-validate",
-  "version": "2.3.1",
+  "name": "egg-typebox-validate-fengmk2",
+  "version": "3.0.0-beta.1",
   "description": "another validate for typescript egg projects",
   "eggPlugin": {
-    "name": "typeboxValidate"
+    "name": "typeboxValidate",
+    "exports": {
+      "import": "./dist/esm",
+      "require": "./dist/commonjs",
+      "typescript": "./src"
+    }
   },
   "keywords": [
     "egg",
@@ -14,76 +19,103 @@
     "eggPlugin",
     "egg-plugin"
   ],
-  "types": "typing/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiekw2010/egg-typebox-validate.git"
+  },
+  "author": "xiekw2010",
+  "engines": {
+    "node": ">= 18.19.0"
+  },
   "dependencies": {
+    "@eggjs/core": "^6.2.13",
     "@sinclair/typebox": "^0.23.0",
     "ajv": "^8.8.2",
     "ajv-formats": "^2.1.1",
     "ajv-keywords": "^5.1.0"
   },
   "devDependencies": {
-    "@types/assert": "^1.4.2",
-    "@types/debug": "^4.1.4",
-    "@types/mocha": "^5.1.0",
-    "@types/node": "^9.6.5",
-    "@types/nunjucks": "^3.1.1",
-    "@types/supertest": "^2.0.7",
+    "@arethetypeswrong/cli": "^0.17.3",
+    "@eggjs/bin": "7",
+    "@eggjs/mock": "^6.0.5",
+    "@eggjs/tsconfig": "1",
+    "@types/mocha": "10",
+    "@types/node": "22",
+    "@types/semver": "^7.5.8",
     "benchmark": "^2.1.4",
-    "egg": "^2.16.0",
-    "egg-bin": "^4.11.0",
-    "egg-ci": "^1.11.0",
-    "egg-mock": "^3.26.0",
-    "egg-ts-helper": "^1.25.8",
-    "eslint": "^6.8.0",
-    "eslint-config-egg": "^8.0.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-compat": "^3.12.0",
-    "eslint-plugin-import": "^2.24.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "parameter": "^3.6.0",
-    "prettier": "^2.3.1",
-    "semver": "^7.3.5",
-    "typescript": "^4.2.4"
-  },
-  "egg": {
-    "typescript": true
-  },
-  "engines": {
-    "node": ">=14.0.0"
+    "egg": "^4.0.8",
+    "egg-logger": "^3.6.1",
+    "eslint": "8",
+    "eslint-config-egg": "14",
+    "glob": "^11.0.1",
+    "parameter": "^3.7.0",
+    "rimraf": "6",
+    "semver": "^7.7.1",
+    "snap-shot-it": "^7.9.10",
+    "supertest": "^6.3.3",
+    "tshy": "3",
+    "tshy-after": "1",
+    "typescript": "5"
   },
   "scripts": {
-    "build": "npm run tsc",
-    "tsc": "tsc -p tsconfig.json",
-    "tsc:noEmit": "tsc -p tsconfig.json --noEmit",
-    "clean": "rm -rf app/**/*.js && rm -rf *.js",
-    "test": "npm run lint && npm run test-local",
-    "test-local": "egg-bin test",
     "benchmark": "node ./benchmark/ajv-vs-parameter.mjs",
-    "cov": "egg-bin cov",
-    "lint": "eslint app --ext .ts --fix",
-    "ci": "npm run lint && npm run cov",
-    "prepublishOnly": "npm run clean && npm run build"
+    "lint": "eslint --cache src test --ext .ts",
+    "pretest": "npm run clean && npm run lint -- --fix",
+    "test": "egg-bin test",
+    "test:snapshot:update": "SNAPSHOT_UPDATE=1 egg-bin test",
+    "preci": "npm run clean &&  npm run lint",
+    "ci": "egg-bin cov",
+    "postci": "npm run prepublishOnly && npm run clean",
+    "clean": "rimraf dist",
+    "prepublishOnly": "tshy && tshy-after && attw --pack --profile node16"
+  },
+  "type": "module",
+  "tshy": {
+    "exports": {
+      ".": "./src/index.ts",
+      "./decorator": "./src/decorator.ts",
+      "./typebox": "./src/typebox.ts",
+      "./package.json": "./package.json"
+    }
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    },
+    "./decorator": {
+      "import": {
+        "types": "./dist/esm/decorator.d.ts",
+        "default": "./dist/esm/decorator.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/decorator.d.ts",
+        "default": "./dist/commonjs/decorator.js"
+      }
+    },
+    "./typebox": {
+      "import": {
+        "types": "./dist/esm/typebox.d.ts",
+        "default": "./dist/esm/typebox.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/typebox.d.ts",
+        "default": "./dist/commonjs/typebox.js"
+      }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
-    "index.d.ts",
-    "app/**/*.js",
-    "app.js",
-    "decorator.js",
-    "decorator.d.ts",
-    "typebox.js",
-    "typebox.d.ts"
+    "dist",
+    "src"
   ],
-  "ci": {
-    "type": "travis",
-    "os": {
-      "travis": "linux"
-    },
-    "version": "14"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/xiekw2010/egg-typebox-validate.git"
-  },
-  "author": "xiekw2010"
+  "types": "./dist/commonjs/index.d.ts",
+  "main": "./dist/commonjs/index.js",
+  "module": "./dist/esm/index.js"
 }

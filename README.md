@@ -1,19 +1,14 @@
 # egg-typebox-validate
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
 [npm-image]: https://img.shields.io/npm/v/egg-typebox-validate.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-typebox-validate
-[travis-image]: https://img.shields.io/travis/xiekw2010/egg-typebox-validate.svg?style=flat-square
-[travis-url]: https://travis-ci.org/xiekw2010/egg-typebox-validate
 [codecov-image]: https://img.shields.io/codecov/c/github/xiekw2010/egg-typebox-validate.svg?style=flat-square
 [codecov-url]: https://codecov.io/github/xiekw2010/egg-typebox-validate?branch=master
-[david-image]: https://img.shields.io/david/xiekw2010/egg-typebox-validate.svg?style=flat-square
-[david-url]: https://david-dm.org/xiekw2010/egg-typebox-validate
 [snyk-image]: https://snyk.io/test/npm/egg-typebox-validate/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-typebox-validate
 [download-image]: https://img.shields.io/npm/dm/egg-typebox-validate.svg?style=flat-square
@@ -106,16 +101,23 @@ export default HomeController;
 
 ![tpian](https://gw.alipayobjects.com/zos/antfincdn/XjH2W7lEB/ad5b628c-9ff9-456d-bb7b-2fb0ac418f1c.png)
 
-
 ## 怎么使用
 
 1. 安装
+
+针对 `egg@4.x` 及以上版本，使用
 
 ```js
 npm i egg-typebox-validate -S
 ```
 
-2. 在项目中配置
+针对 `egg@3.x` 版本，使用
+
+```js
+npm i egg-typebox-validate@3 -S
+```
+
+1. 在项目中配置
 
 ```js
 // config/plugin.ts
@@ -452,3 +454,9 @@ async someFunc() {
 ## License
 
 [MIT](LICENSE)
+
+## Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=xiekw2010/egg-typebox-validate)](https://github.com/xiekw2010/egg-typebox-validate/graphs/contributors)
+
+Made with [contributors-img](https://contrib.rocks).

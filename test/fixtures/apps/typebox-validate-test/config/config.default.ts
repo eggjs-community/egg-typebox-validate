@@ -1,4 +1,4 @@
-import { EggAppConfig, PowerPartial } from 'egg';
+import type { EggAppConfig, PowerPartial } from 'egg';
 import { valid } from 'semver';
 
 export default () => {
@@ -33,7 +33,5 @@ export default () => {
       });
     }
   }
-  return {
-    ...config,
-  };
+  return config;
 };

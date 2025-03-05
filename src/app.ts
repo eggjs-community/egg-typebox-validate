@@ -1,11 +1,15 @@
-import { Application } from 'egg';
+import type { EggCore, ILifecycleBoot } from '@eggjs/core';
 import addFormats from 'ajv-formats';
-import Ajv from 'ajv/dist/2019';
+import { Ajv2019 as Ajv } from 'ajv/dist/2019.js';
 import keyWords from 'ajv-keywords';
 
 const getAjvInstance = () => {
   const ajv = new Ajv();
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   keyWords(ajv, 'transform');
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   addFormats(ajv, [
     'date-time',
     'time',
@@ -27,12 +31,10 @@ const getAjvInstance = () => {
   return ajv;
 };
 
-type ApplicationWithAjv = Application & { ajv: Ajv };
+export default class AppBootHook implements ILifecycleBoot {
+  public app: EggCore;
 
-export default class AppBootHook {
-  public app: ApplicationWithAjv;
-
-  constructor(app: ApplicationWithAjv) {
+  constructor(app: EggCore) {
     this.app = app;
     this.app.ajv = getAjvInstance();
   }
@@ -41,8 +43,13 @@ export default class AppBootHook {
     const config = this.app.config;
     const typeboxValidate = config.typeboxValidate;
     if (typeboxValidate) {
-      const patchAjv = typeboxValidate.patchAjv;
-      patchAjv && patchAjv(this.app.ajv);
+      typeboxValidate.patchAjv?.(this.app.ajv);
     }
+  }
+}
+
+declare module '@eggjs/core' {
+  interface EggCore {
+    ajv: Ajv;
   }
 }

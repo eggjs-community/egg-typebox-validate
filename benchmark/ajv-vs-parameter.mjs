@@ -2,7 +2,7 @@ import Benchmark from 'benchmark';
 import addFormats from 'ajv-formats';
 import Ajv from 'ajv';
 import Parameter from 'parameter';
-import { Type } from '../typebox';
+import { Type } from '../dist/esm/typebox.js';
 
 const getAjvInstance = () =>
   addFormats(new Ajv({}), [
@@ -88,6 +88,7 @@ suite
   .run({ async: true });
 
 /*
+
 MacBook Pro(2.2 GHz 六核Intel Core i7)
 
 #ajv x 941 ops/sec ±3.97% (73 runs sampled)
@@ -95,4 +96,14 @@ MacBook Pro(2.2 GHz 六核Intel Core i7)
 #parameter x 2,544,118 ops/sec ±4.68% (79 runs sampled)
 #parameter define once x 2,541,590 ops/sec ±5.34% (77 runs sampled)
 Fastest is #ajv define once
+
+MacBook Pro(13-inch, M1, 2020)
+
+#ajv x 2,822 ops/sec ±6.24% (82 runs sampled)
+#ajv define once x 27,165,953 ops/sec ±7.68% (88 runs sampled)
+#parameter x 4,464,409 ops/sec ±1.45% (98 runs sampled)
+#parameter define once x 4,515,932 ops/sec ±5.30% (92 runs sampled)
+Fastest is #ajv define once
+
 */
+

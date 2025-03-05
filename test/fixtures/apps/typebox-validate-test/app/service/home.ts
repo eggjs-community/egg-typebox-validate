@@ -1,7 +1,7 @@
 import { Service } from 'egg';
-import { Static, Type } from '../../../../../../typebox';
-import { Validate } from "../../../../../../decorator";
-import { TYPEBOX_BODY } from "../controller/home";
+import { Static, Type } from '../../../../../../src/typebox.js';
+import { Validate } from "../../../../../../src/decorator.js";
+import { TYPEBOX_BODY } from "../controller/home.js";
 
 type HomeTypeBoxType = Static<typeof TYPEBOX_BODY>;
 type ServiceParamsType = Pick<HomeTypeBoxType, 'version'>
