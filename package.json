@@ -1,6 +1,6 @@
 {
-  "name": "egg-typebox-validate-fengmk2",
-  "version": "3.0.0-beta.1",
+  "name": "egg-typebox-validate",
+  "version": "2.3.1",
   "description": "another validate for typescript egg projects",
   "eggPlugin": {
     "name": "typeboxValidate",
@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/xiekw2010/egg-typebox-validate.git"
+    "url": "https://github.com/eggjs-community/egg-typebox-validate.git"
   },
   "author": "xiekw2010",
   "engines": {
