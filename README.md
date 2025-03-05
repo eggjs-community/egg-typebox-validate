@@ -7,8 +7,8 @@
 
 [npm-image]: https://img.shields.io/npm/v/egg-typebox-validate.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-typebox-validate
-[codecov-image]: https://img.shields.io/codecov/c/github/xiekw2010/egg-typebox-validate.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/xiekw2010/egg-typebox-validate?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/eggjs-community/egg-typebox-validate.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/eggjs-community/egg-typebox-validate?branch=master
 [snyk-image]: https://snyk.io/test/npm/egg-typebox-validate/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-typebox-validate
 [download-image]: https://img.shields.io/npm/dm/egg-typebox-validate.svg?style=flat-square
@@ -457,6 +457,6 @@ async someFunc() {
 
 ## Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=xiekw2010/egg-typebox-validate)](https://github.com/xiekw2010/egg-typebox-validate/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=eggjs-community/egg-typebox-validate)](https://github.com/eggjs-community/egg-typebox-validate/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks).
